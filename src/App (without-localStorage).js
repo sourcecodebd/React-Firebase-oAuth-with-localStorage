@@ -52,6 +52,7 @@ function App() {
           errCode: err.code,
           errMessage: err.message,
         }
+        console.log(errorCollection.errCode)
         setError(errorCollection);
       })
   }
@@ -61,6 +62,7 @@ function App() {
     signOut(auth)
       .then(() => {
         setUser({});
+        setError({});
         console.log('sign-out successful')
       })
   }
@@ -88,7 +90,7 @@ function App() {
       <div className="d-flex justify-content-center pt-5">
         <div className="p-3 rounded-2" style={bgStyle}>
           {
-            error.errorCode && <p>{error.errorCode}</p>
+            error?.errCode && !user.name && <p>{error.errCode}</p>
           }
 
           {
